@@ -1,0 +1,6 @@
+{
+  "name": "HirePulse - Enterprise Job & Recruitment Portal",
+  "description": "Streamlined recruitment workflow portal connecting employers, administrators, and job seekers with job posting, approval queues, candidate ATS tracking, and Java backend architectural blueprints.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
