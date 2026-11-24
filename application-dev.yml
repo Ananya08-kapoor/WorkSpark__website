@@ -1,0 +1,15 @@
+# Local development only: in-memory H2, console enabled, demo data allowed.
+spring:
+  datasource:
+    url: jdbc:h2:mem:workspark;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false   # localhost only

@@ -1,21 +1,125 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WorkSpark - Online Job Portal & Recruitment Platform</title>
-    <meta name="description" content="WorkSpark: Streamlined recruitment portal connecting employers, job seekers, and administrators with job posting, admin approval, candidate tracking, and modern recruitment workflows." />
-    <meta property="og:title" content="WorkSpark - Online Job Portal & Recruitment Platform" />
-    <meta property="og:description" content="WorkSpark: Streamlined recruitment portal connecting employers, job seekers, and administrators with job posting, admin approval, candidate tracking, and modern recruitment workflows." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body class="bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-200">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WorkSpark — Online Job Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F6F9;--card:#fff;--ink:#0F1B2D;--mut:#5B6B80;--line:#E1E6ED;--acc:#0B7A75;--onacc:#fff;--tag:#EEF1F5;--in:#fff;--inb:#C5CEDA;--okb:#DDF3EC;--okt:#0A5F4A;--wtb:#FDECC8;--wtt:#7A4A06;--nob:#FBE0E0;--not:#8E1F1F;--ifb:#DDE8FB;--ift:#1F3F8E;--hero:#0F1B2D;--herot:#C9D3E0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1621;--card:#16212F;--ink:#E8EEF6;--mut:#9FB0C5;--line:#263548;--acc:#34B8AE;--onacc:#05201E;--tag:#223247;--in:#0E1621;--inb:#3A4D66;--okb:#12382F;--okt:#8FE3C8;--wtb:#41300F;--wtt:#F6CE82;--nob:#451B1B;--not:#F4A5A5;--ifb:#17305A;--ift:#A9C6F7;--hero:#0A1119}}
+:root[data-theme="dark"]{--bg:#0E1621;--card:#16212F;--ink:#E8EEF6;--mut:#9FB0C5;--line:#263548;--acc:#34B8AE;--onacc:#05201E;--tag:#223247;--in:#0E1621;--inb:#3A4D66;--okb:#12382F;--okt:#8FE3C8;--wtb:#41300F;--wtt:#F6CE82;--nob:#451B1B;--not:#F4A5A5;--ifb:#17305A;--ift:#A9C6F7;--hero:#0A1119}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+h1,h2,h3,p{margin:0}h1{font-size:28px}
+a{color:var(--acc)}
+.nav{display:flex;align-items:center;gap:20px;padding:8px 24px;min-height:64px;background:var(--card);border-bottom:1px solid var(--line);flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:20px;color:var(--acc)}
+.nav a{color:var(--mut);text-decoration:none;font-size:15px;padding:12px 0}.nav a.on{color:var(--acc);font-weight:700}
+.sp{flex:1}
+.wrap{max-width:1120px;margin:0 auto;padding:28px 24px 64px;box-sizing:border-box;display:grid;gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;box-sizing:border-box}
+.btn{background:var(--acc);color:var(--onacc);border:0;border-radius:8px;padding:0 20px;min-height:44px;font:600 15px 'DM Sans',sans-serif;cursor:pointer}
+.btn.o{background:transparent;color:var(--acc);border:1px solid var(--acc)}.btn.d{background:transparent;color:var(--not);border:1px solid var(--not)}.btn[disabled]{opacity:.6;cursor:default}
+.in{box-sizing:border-box;width:100%;min-height:44px;border:1px solid var(--inb);border-radius:8px;padding:0 12px;font:15px 'DM Sans',sans-serif;background:var(--in);color:var(--ink)}
+textarea.in{padding:12px;min-height:130px}
+label{display:block;font-size:13px;font-weight:500;color:var(--mut);margin-bottom:6px}
+.b{display:inline-block;border-radius:99px;padding:4px 12px;font-size:13px;font-weight:500;white-space:nowrap}
+.ok{background:var(--okb);color:var(--okt)}.wt{background:var(--wtb);color:var(--wtt)}.no{background:var(--nob);color:var(--not)}.if{background:var(--ifb);color:var(--ift)}
+.tag{background:var(--tag);color:var(--mut);border-radius:6px;padding:4px 10px;font-size:13px}
+.mut{color:var(--mut);font-size:14px}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.end{align-items:flex-end}.sb{justify-content:space-between}
+.g{display:grid;gap:12px}.f{flex:1;min-width:150px}
+.cols{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}.cols>.l{flex:1;min-width:260px}.cols>.r{flex:2;min-width:300px}
+.tw{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:620px}
+th{text-align:left;font-size:13px;color:var(--mut);padding:10px 12px;border-bottom:1px solid var(--line)}td{padding:12px;border-bottom:1px solid var(--line);font-size:15px}
+.steps{display:flex}.st{flex:1;text-align:center;font-size:13px;color:var(--mut)}.st.on{color:var(--ink);font-weight:500}
+.dot{width:28px;height:28px;border-radius:50%;background:var(--line);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--mut)}.st.on .dot{background:var(--acc);color:var(--onacc)}
+.jb{display:flex;justify-content:space-between;gap:8px;width:100%;text-align:left;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px;min-height:44px;font:inherit;margin-bottom:8px;cursor:pointer}.jb.sel{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc)}
+.login{min-height:100vh;display:flex;flex-wrap:wrap}.login>section{flex:1;min-width:300px;box-sizing:border-box;padding:48px 32px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.hero{background:var(--hero);color:#fff}.hero p,.hero li{color:var(--herot)}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(20px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;max-width:90vw}#toast.show{opacity:1}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+const ST=['Applied','Under review','Shortlisted','Interview','Selected','Rejected'];
+const BC={'Applied':'if','Under review':'if','Shortlisted':'ok','Interview':'wt','Selected':'ok','Rejected':'no','approved':'ok','pending':'wt','rejected':'no'};
+const LBL={approved:'Live',pending:'Pending approval',rejected:'Rejected'};
+let jobs=[
+{id:1,title:'Java Backend Developer',company:'Acme Technologies',loc:'Bengaluru',type:'Full-time',exp:'2–4 years',salary:'₹8–12 LPA',desc:'Build and maintain REST services with Spring Boot and MySQL.',status:'approved',owner:'emp'},
+{id:2,title:'Junior Software Engineer',company:'Nimbus Labs',loc:'Pune',type:'Full-time',exp:'0–1 years',salary:'₹4–6 LPA',desc:'Work with a small team on web features and bug fixes.',status:'approved'},
+{id:3,title:'QA Automation Intern',company:'Bright Systems',loc:'Remote',type:'Internship',exp:'Freshers',salary:'Stipend ₹15k',desc:'Write and run automated tests for a web product.',status:'approved'},
+{id:4,title:'Data Analyst',company:'Orbit Analytics',loc:'Noida',type:'Full-time',exp:'1–3 years',salary:'₹6–9 LPA',desc:'Turn business data into dashboards and weekly insights.',status:'approved'},
+{id:7,title:'React Frontend Developer',company:'Pixel Works',loc:'Mumbai',type:'Full-time',exp:'1–3 years',salary:'₹6–10 LPA',desc:'Build responsive interfaces with React and Vite.',status:'approved'},
+{id:8,title:'Technical Content Writer',company:'Nimbus Labs',loc:'Remote',type:'Part-time',exp:'Freshers',salary:'₹3–4 LPA',desc:'Write developer documentation and tutorials.',status:'approved'},
+{id:9,title:'Database Administrator',company:'Orbit Analytics',loc:'Noida',type:'Full-time',exp:'3–6 years',salary:'₹10–14 LPA',desc:'Manage PostgreSQL clusters, backups and performance tuning.',status:'approved'},
+{id:10,title:'Cloud Support Intern',company:'Bright Systems',loc:'Pune',type:'Internship',exp:'Freshers',salary:'Stipend ₹12k',desc:'Help the support team monitor and troubleshoot cloud services.',status:'approved'},
+{id:5,title:'UI/UX Designer',company:'Pixel Works',loc:'Mumbai',type:'Full-time',exp:'2–4 years',salary:'₹7–10 LPA',desc:'Design clean, accessible interfaces for web and mobile.',status:'pending'},
+{id:6,title:'DevOps Engineer',company:'Acme Technologies',loc:'Bengaluru',type:'Full-time',exp:'3–5 years',salary:'₹12–16 LPA',desc:'Own CI/CD pipelines and cloud deployments.',status:'pending',owner:'emp'}];
+let apps=[
+{id:1,jobId:1,name:'Rohan Mehta',exp:'3 years',on:'8 Oct',status:'Under review'},
+{id:2,jobId:1,name:'Sneha Iyer',exp:'4 years',on:'7 Oct',status:'Shortlisted'},
+{id:3,jobId:1,name:'Karan Malhotra',exp:'2 years',on:'7 Oct',status:'Applied'}];
+let nid=20,role=null,view='',selJob=1,selApp=null,selP=null,flt={k:'',l:'',t:''};
+const PS=5,pg={s:1,a:1,j:1,p:1};
+const pages=n=>Math.max(1,Math.ceil(n/PS));
+function slice(L,k){pg[k]=Math.min(Math.max(1,pg[k]),pages(L.length));return L.slice((pg[k]-1)*PS,pg[k]*PS)}
+function pager(n,k){const t=pages(n);if(t<2)return'';return `<nav class="row sb" aria-label="Pagination" style="margin-top:12px"><button class="btn o" ${pg[k]<=1?'disabled':''} onclick="pgGo('${k}',-1)">Previous</button><span class="mut">Page ${pg[k]} of ${t} · ${n} results</span><button class="btn o" ${pg[k]>=t?'disabled':''} onclick="pgGo('${k}',1)">Next</button></nav>`}
+function pgGo(k,d){pg[k]+=d;render()}
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const logo='<span class="logo"><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><rect width="28" height="28" rx="8" fill="#0B7A75"/><path d="M14 5L16.2 11.8L23 14L16.2 16.2L14 23L11.8 16.2L5 14L11.8 11.8Z" fill="#F5B83D"/></svg>WorkSpark</span>';
+const badge=s=>`<span class="b ${BC[s]}">${LBL[s]||s}</span>`;
+let tt;function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>t.classList.remove('show'),2600)}
+function go(r,v){role=r;view=v;render();window.scrollTo(0,0)}
+function login(){const r=document.querySelector('input[name=r]:checked').value;go(r,{seeker:'search',employer:'post',admin:'appr'}[r])}
 
+function vLogin(){return `<div class="login"><section class="hero"><span class="logo" style="color:#5CD6CC;font-size:24px">${logo.replace('<span class="logo">','').replace(/<\/span>$/,'')}</span><h1 style="font-size:38px;line-height:1.15">Hiring, organised from posting to offer.</h1><p>Employers post vacancies, admins keep listings genuine, and candidates find and apply to the right roles.</p><ol style="margin:0;padding-left:20px;display:grid;gap:8px"><li>Employer posts a job</li><li>Admin approves it</li><li>Candidates search and apply</li><li>Employer reviews and updates status</li></ol></section>
+<section style="align-items:center"><div class="card g" style="width:100%;max-width:400px;padding:32px;gap:18px"><h2 style="font-size:26px">Welcome back</h2>
+<div class="row" style="gap:18px">${['seeker:Job seeker','employer:Employer','admin:Admin'].map((x,i)=>`<label style="display:flex;gap:8px;align-items:center;margin:0;min-height:44px;color:var(--ink);font-size:15px"><input type="radio" name="r" value="${x.split(':')[0]}" ${i?'':'checked'}>${x.split(':')[1]}</label>`).join('')}</div>
+<div><label for="e">Email</label><input class="in" id="e" type="email" placeholder="you@example.com"></div>
+<div><label for="p">Password</label><input class="in" id="p" type="password" placeholder="Your password"></div>
+<button class="btn" onclick="login()">Log in</button><p class="mut">Demo mode: no real accounts. Pick a role to try the full workflow, then sign out and switch roles to follow a job from posting to approval to application.</p></div></section></div>`}
+
+function nav(){const T={seeker:[['search','Find jobs'],['apps','My applications']],employer:[['post','Post a job'],['jobs','My jobs & applicants']],admin:[['appr','Job approvals']]}[role];
+return `<div class="nav">${logo}${T.map(t=>`<a href="#" class="${view==t[0]?'on':''}" onclick="go(role,'${t[0]}');return false">${t[1]}</a>`).join('')}<span class="sp"></span><span class="mut">${role[0].toUpperCase()+role.slice(1)} view</span><button class="btn o" onclick="go(null,'')">Sign out</button></div>`}
+
+function vSearch(){return `<h1>Find your next role</h1><div class="card row end"><div class="f" style="flex:2"><label for="k">Job title or skill</label><input class="in" id="k" value="${esc(flt.k)}" placeholder="e.g. Java developer" oninput="flt.k=this.value;pg.s=1;fr()"></div><div class="f"><label for="l">Location</label><input class="in" id="l" value="${esc(flt.l)}" placeholder="City or remote" oninput="flt.l=this.value;pg.s=1;fr()"></div><div class="f"><label for="t">Job type</label><select class="in" id="t" onchange="flt.t=this.value;pg.s=1;fr()">${['','Full-time','Part-time','Internship'].map(o=>`<option value="${o}" ${flt.t==o?'selected':''}>${o||'All types'}</option>`).join('')}</select></div></div><div id="res" class="g"></div>`}
+function fr(){const k=flt.k.toLowerCase(),l=flt.l.toLowerCase();
+const L=jobs.filter(j=>j.status=='approved'&&(j.title+j.company+j.desc).toLowerCase().includes(k)&&j.loc.toLowerCase().includes(l)&&(!flt.t||j.type==flt.t));
+$('#res').innerHTML=L.length?slice(L,'s').map(j=>{const ap=apps.some(a=>a.mine&&a.jobId==j.id);return `<div class="card row sb"><div class="g" style="gap:8px;flex:1;min-width:240px"><h3 style="font-size:18px">${esc(j.title)}</h3><p class="mut">${esc(j.company)} · ${esc(j.loc)}</p><p style="font-size:15px">${esc(j.desc)}</p><div class="row" style="gap:8px"><span class="tag">${esc(j.type)}</span><span class="tag">${esc(j.exp)}</span><span class="tag">${esc(j.salary)}</span></div></div><button class="btn" ${ap?'disabled':''} onclick="apply(${j.id})">${ap?'Applied':'Apply now'}</button></div>`}).join('')+pager(L.length,'s'):'<div class="card mut">No jobs match your search. Try different keywords.</div>'}
+function apply(id){if(apps.some(a=>a.mine&&a.jobId==id))return;apps.push({id:nid++,jobId:id,name:'You (demo candidate)',exp:'—',on:'Today',status:'Applied',mine:true});toast('Application submitted — track it under My applications');fr()}
+
+function vApps(){const m=apps.filter(a=>a.mine);if(!m.length)return `<h1>My applications</h1><div class="card g"><p>You haven't applied to any jobs yet.</p><div><button class="btn" onclick="go('seeker','search')">Find jobs</button></div></div>`;
+const s=m.find(a=>a.id==selApp)||m[0],j=jobs.find(x=>x.id==s.jobId),i=s.status=='Rejected'?0:ST.indexOf(s.status);
+return `<h1>My applications</h1><div class="card tw"><table><thead><tr><th>Job</th><th>Company</th><th>Applied on</th><th>Status</th><th></th></tr></thead><tbody>${slice(m,'a').map(a=>{const x=jobs.find(y=>y.id==a.jobId);return `<tr><td>${esc(x.title)}</td><td>${esc(x.company)}</td><td>${a.on}</td><td>${badge(a.status)}</td><td><button class="btn o" onclick="selApp=${a.id};render()">Track</button></td></tr>`}).join('')}</tbody></table>${pager(m.length,'a')}</div>
+<div class="card g"><h3 style="font-size:18px">${esc(j.title)} · ${esc(j.company)}</h3><div class="steps">${ST.slice(0,5).map((n,k)=>`<div class="st ${k<=i?'on':''}"><div class="dot">${k+1}</div>${n}</div>`).join('')}</div>${s.status=='Rejected'?'<p class="mut">The employer did not take this application forward.</p>':''}</div>`}
+
+function vPost(){const f=(id,l,p,t='text')=>`<div><label for="${id}">${l}</label><input class="in" id="${id}" type="${t}" placeholder="${p}"></div>`;
+return `<div class="cols"><div class="card g r" style="gap:18px"><h1>Post a job</h1><div class="g" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">${f('pt','Job title','e.g. Java Backend Developer')}<div><label for="pc">Company</label><input class="in" id="pc" value="Acme Technologies"></div>${f('pl','Location','City or remote')}<div><label for="pj">Job type</label><select class="in" id="pj"><option>Full-time</option><option>Part-time</option><option>Internship</option></select></div>${f('px','Experience required','e.g. 2–4 years')}${f('pd','Application deadline','','date')}${f('pa','Minimum salary (LPA)','e.g. 8','number')}${f('pb','Maximum salary (LPA)','e.g. 12','number')}</div><div><label for="pm">Job description</label><textarea class="in" id="pm" placeholder="Responsibilities, required skills, benefits"></textarea></div><div class="row"><button class="btn" onclick="postJob()">Submit for approval</button></div></div>
+<aside class="card g l"><h3 style="font-size:16px">What happens next</h3><div class="row"><span class="b wt">Pending</span><span class="mut">Admin reviews your post</span></div><div class="row"><span class="b ok">Live</span><span class="mut">Candidates can search and apply</span></div><div class="row"><span class="b no">Rejected</span><span class="mut">You see the admin's remarks</span></div></aside></div>`}
+function postJob(){const v=i=>$('#'+i).value.trim(),t=v('pt'),m=v('pm');if(!t||!m){toast('Please add a job title and description');return}
+const a=v('pa'),b=v('pb');jobs.push({id:nid,title:t,company:v('pc')||'Your company',loc:v('pl')||'Remote',type:$('#pj').value,exp:v('px')||'Any',salary:a&&b?`₹${a}–${b} LPA`:'Not disclosed',desc:m,status:'pending',owner:'emp'});selJob=nid++;toast('Submitted — waiting for admin approval');go('employer','jobs')}
+
+function vJobs(){const mine=jobs.filter(j=>j.owner=='emp'),j=mine.find(x=>x.id==selJob)||mine[0];if(!j)return `<h1>My jobs</h1><div class="card">No jobs yet.</div>`;
+const A=apps.filter(a=>a.jobId==j.id);let body;
+if(j.status!='approved')body=`<p class="mut">${j.status=='pending'?'This job is waiting for admin approval. Applicants appear here once it is live.':'This job was rejected.'}</p>${j.remarks?`<p style="font-size:15px"><b>Admin remarks:</b> ${esc(j.remarks)}</p>`:''}`;
+else body=A.length?`<div class="tw"><table><thead><tr><th>Candidate</th><th>Experience</th><th>Applied</th><th>Status</th><th></th></tr></thead><tbody>${slice(A,'j').map(a=>`<tr><td>${esc(a.name)}</td><td>${a.exp}</td><td>${a.on}</td><td><select class="in" id="s${a.id}" aria-label="Status for ${esc(a.name)}">${ST.map(s=>`<option ${s==a.status?'selected':''}>${s}</option>`).join('')}</select></td><td><button class="btn" onclick="upd(${a.id})">Update</button></td></tr>`).join('')}</tbody></table></div>${pager(A.length,'j')}<p class="mut">Updating a status notifies the candidate automatically.</p>`:'<p class="mut">No applications yet.</p>';
+return `<h1>My jobs & applicants</h1><div class="cols"><div class="l">${mine.map(x=>`<button class="jb ${x.id==j.id?'sel':''}" onclick="selJob=${x.id};pg.j=1;render()"><span>${esc(x.title)}</span>${badge(x.status)}</button>`).join('')}</div><div class="card g r"><div class="row sb"><h3 style="font-size:20px">${esc(j.title)}</h3>${badge(j.status)}</div>${body}</div></div>`}
+function upd(id){apps.find(a=>a.id==id).status=$('#s'+id).value;toast('Status updated — candidate notified')}
+
+function vAppr(){const P=jobs.filter(j=>j.status=='pending');if(!P.length)return `<h1>Jobs awaiting approval</h1><div class="card mut">Nothing to review right now.</div>`;
+const j=P.find(x=>x.id==selP)||P[0];selP=j.id;
+return `<h1>Jobs awaiting approval</h1><div class="cols"><div class="l">${slice(P,'p').map(x=>`<button class="jb ${x.id==j.id?'sel':''}" onclick="selP=${x.id};render()"><span>${esc(x.title)}<br><span class="mut">${esc(x.company)}</span></span>${badge('pending')}</button>`).join('')}${pager(P.length,'p')}</div><div class="card g r"><h3 style="font-size:20px">${esc(j.title)}</h3><p class="mut">${esc(j.company)} · ${esc(j.loc)} · ${esc(j.type)} · ${esc(j.exp)} · ${esc(j.salary)}</p><p style="font-size:15px;line-height:1.5">${esc(j.desc)}</p><div><label for="rm">Remarks (required when rejecting)</label><textarea class="in" id="rm" style="min-height:90px" placeholder="Reason shown to the employer"></textarea></div><div class="row"><button class="btn" onclick="decide(true)">Approve</button><button class="btn d" onclick="decide(false)">Reject</button></div></div></div>`}
+function decide(ok){const j=jobs.find(x=>x.id==selP),r=$('#rm').value.trim();if(!ok&&!r){toast('Add remarks before rejecting');return}
+j.status=ok?'approved':'rejected';j.remarks=r;selP=null;toast(ok?'Approved — now visible to job seekers':'Rejected — employer can see your remarks');render()}
+
+function render(){const V={search:vSearch,apps:vApps,post:vPost,jobs:vJobs,appr:vAppr};
+$('#app').innerHTML=role?nav()+`<main class="wrap">${V[view]()}</main>`:vLogin();if(role&&view=='search')fr()}
+render();
+</script>
+</body>
+</html>

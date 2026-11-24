@@ -1,0 +1,32 @@
+# Production: PostgreSQL via environment variables. No H2, no demo data.
+spring:
+  datasource:
+    url: ${DATABASE_URL}            # jdbc:postgresql://host:5432/workspark
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    hikari:
+      maximum-pool-size: 10
+  jpa:
+    hibernate:
+      ddl-auto: validate            # schema is managed by Flyway migrations
+    open-in-view: false
+  h2:
+    console:
+      enabled: false
+  sql:
+    init:
+      mode: never
+  flyway:
+    enabled: true
+server:
+  servlet:
+    session:
+      cookie:
+        secure: true
+        http-only: true
+        same-site: none             # frontend (Vercel) and API are on different domains
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
